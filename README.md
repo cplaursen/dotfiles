@@ -1,4 +1,4 @@
-* My dotfiles
+# Christian's dotfiles
 
 Features include
 * init.vim
