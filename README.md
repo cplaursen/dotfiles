@@ -1,4 +1,4 @@
-* My dotfiles
+# Christian's dotfiles
 
 Features include
 * init.vim
@@ -7,4 +7,5 @@ Features include
   + Linting for several languages
 
 * .bashrc
-  + Mostly stolen from LARBS[larbs.xyz]
+  + Mostly stolen from [Luke Smith's dotfiles](https://github.com/LukeSmithxyz/voidrice)
+  + Add support for changing directory when exiting [ranger](https://ranger.github.io/)
