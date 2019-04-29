@@ -32,12 +32,9 @@ alias sr="sudo ranger"
 alias e="emacsclient"
 alias ka="killall"
 alias g="git"
-alias trem="transmission-remote"
 alias mkd="mkdir -pv"
 alias ref="shortcuts.sh && source ~/.bashrc" # Refresh shortcuts manually and reload bashrc
 alias bw="wal -n -i ~/Images/bird.png" # Rerun pywal
-alias pi="bash ~/.larbs/wizard/wizard.sh"
-alias jme="bash /home/chris/jmonkeyplatform/bin/jmonkeyplatform"
 
 # Internet
 alias yt="youtube-dl --add-metadata -ic" # Download video link
