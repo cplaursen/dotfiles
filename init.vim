@@ -3,20 +3,39 @@ filetype off
 set rtp+=~/.config/nvim/bundle/Vundle.vim
 call vundle#begin('~/.config/nvim/bundle/plugins')
 
+" Plugin Manager
 Plugin 'VundleVim/Vundle.vim'
+
+" Run programs
 Plugin 'skywind3000/asyncrun.vim'
+
+" Linter
 Plugin 'w0rp/ale'
+
+" Show indentation with <Leader>ig
 Plugin 'nathanaelkane/vim-indent-guides'
 
 " tpope plugins
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-sensible'
+" Git wrapper, commands look like :G<command> or :Git <command>
+Plugin 'tpope/vim-fugitive'
 
 " NCM2 plugins
 Plugin 'roxma/nvim-yarp'
 Plugin 'ncm2/ncm2'
 Plugin 'ncm2/ncm2-bufword'
 Plugin 'ncm2/ncm2-path'
+
+" Status bar theme
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+
+" Buffer navigation, use <Leader>b to open menu
+Plugin 'jeetsukumaran/vim-buffergator'
+
+" Buffer fuzzy finder
+Plugin 'ctrlpvim/ctrlp.vim'
 
 call vundle#end()
 
@@ -33,7 +52,7 @@ set tabstop=8 softtabstop=4 expandtab shiftwidth=4 smarttab
 " Autocompile TeX files on write
 autocmd BufWritePost *.tex !compiler %
 " Copy dotfiles to my dotfile repo
-let dotfiles = ['init.vim', '.bashrc']
+let dotfiles = ['init.vim', '.bashrc', 'config']
 autocmd BufWritePost * if index(dotfiles, expand('%:t')) >= 0| !cp % ~/Documents/dotfiles/%:t
 " Remove 
 autocmd VimLeave !rm -rf *.ali *.o
@@ -56,6 +75,8 @@ function! s:compile_and_run()
 	exec "AsyncRun! gnatmake % -o %<; time ./%<"
     elseif &filetype == 'haskell'
         exec "AsyncRun! time runhaskell %"
+    elseif &filetype == 'erlang'
+        exec "AsyncRun! time erl %"
     endif
 endfunction
 
@@ -65,12 +86,13 @@ noremap <leader>l :ALEToggle<CR>
 
 function! s:interactive_shell()
     exec 'w'
+    exec "split"
     if &filetype == 'python'
-        exec "split"
         exec "terminal ipython % -i"
     elseif &filetype == 'haskell'
-        exec "split"
         exec "terminal ghci % -i"
+    elseif &filetype == 'erlang'
+        exec "terminal erl %"
     endif
 endfunction
 
@@ -120,3 +142,6 @@ inoremap <expr> <CR> (pumvisible() ? "\<c-y>" : "\<CR>")
 " Use <TAB> to select in the popup menu:
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>" 
+
+" Status bad config
+let g:airline_theme = 'dark_minimal'
