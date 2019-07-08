@@ -1,11 +1,12 @@
 # Christian's dotfiles
 
 Features include
-* init.vim
-  + Automatically copy dotfiles to git repo on write
-  + Autocomplete, asyncronous execute and run in shell
-  + Linting for several languages
+* Nvim config
+  + Automatically copy dotfiles to ~/Documents/dotfiles on write
+  + A lot of plugins - install Plug and run PlugInstall to get them
 
-* .bashrc
-  + Mostly stolen from [Luke Smith's dotfiles](https://github.com/LukeSmithxyz/voidrice)
-  + Add support for changing directory when exiting [ranger](https://ranger.github.io/)
+* Rofi, kitty
+  + Matching colorschemes
+
+* i3, sxhkd
+  + Shortcuts galore
