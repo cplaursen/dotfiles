@@ -24,14 +24,34 @@ autocmd BufWritePost *.tex !compiler %
 nmap <C-p> :NERDTreeToggle<CR>
 
 " Copy dotfiles to my dotfile repo
-let dotfiles = [
+let g:dotdirs = [
 \               'nvim',
 \               'kitty',
 \               'sxhkd',
 \               'rofi',
 \               'i3',
+\             ]
+
+let g:dotfiles = [
+\                '.profile',
+\                '.bashrc',
+\                '.ghci',
 \              ]
-autocmd BufWritePost * if index(dotfiles, expand('%:p:h:t')) >= 0| !cp % ~/Documents/dotfiles/%:p:h:t/%:t
+
+function! WriteDir()
+    if index(g:dotdirs, expand('%:p:h:t')) >= 0
+        !cp % ~/Documents/dotfiles/%:p:h:t/%:t 
+    endif
+endfunction
+
+function! WriteDot()
+    if index(g:dotfiles, expand('%:t')) >= 0
+        !cp % ~/Documents/dotfiles/%:t
+    endif
+endfunction
+
+autocmd BufWritePost * call WriteDir() | call WriteDot()
+
 
 " Quick run via <F5>
 nnoremap <F5> :call <SID>compile_and_run()<CR> 
