@@ -1,63 +1,41 @@
-set nocompatible
-filetype off
-set rtp+=~/.config/nvim/bundle/Vundle.vim
-call vundle#begin('~/.config/nvim/bundle/plugins')
-
-" Plugin Manager
-Plugin 'VundleVim/Vundle.vim'
-
-" Run programs
-Plugin 'skywind3000/asyncrun.vim'
-
-" Linter
-Plugin 'w0rp/ale'
-
-" Show indentation with <Leader>ig
-Plugin 'nathanaelkane/vim-indent-guides'
-
-" tpope plugins
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-sensible'
-" Git wrapper, commands look like :G<command> or :Git <command>
-Plugin 'tpope/vim-fugitive'
-
-" NCM2 plugins
-Plugin 'roxma/nvim-yarp'
-Plugin 'ncm2/ncm2'
-Plugin 'ncm2/ncm2-bufword'
-Plugin 'ncm2/ncm2-path'
-
-" Status bar theme
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-
-" Buffer navigation, use <Leader>b to open menu
-Plugin 'jeetsukumaran/vim-buffergator'
-
-" Buffer fuzzy finder
-Plugin 'ctrlpvim/ctrlp.vim'
-
-call vundle#end()
-
+syntax on
+source ~/.config/nvim/plugins.vim
 filetype plugin indent on
+
+colorscheme spring-night
+set termguicolors
 
 " Map the leader key to SPACE
 let mapleader="\<SPACE>"
 " Add line numbers
-set nu rnu 
+set nu rnu
 " Fix tabs
-set tabstop=8 softtabstop=4 expandtab shiftwidth=4 smarttab
+set tabstop=4 softtabstop=4 expandtab shiftwidth=4 smarttab
+" Make macros faster
+set lazyredraw
 " Remap leader e to insert one character
-:nmap <silent> <leader>e "=nr2char(getchar())<cr>P
+nmap <silent> <leader>e "=nr2char(getchar())<cr>P
+" Make Q run the last command
+nnoremap Q @@
 " Autocompile TeX files on write
 autocmd BufWritePost *.tex !compiler %
+
+" Open file manager with C-p
+nmap <C-p> :NERDTreeToggle<CR>
+
 " Copy dotfiles to my dotfile repo
-let dotfiles = ['init.vim', '.bashrc', 'config']
-autocmd BufWritePost * if index(dotfiles, expand('%:t')) >= 0| !cp % ~/Documents/dotfiles/%:t
-" Remove 
-autocmd VimLeave !rm -rf *.ali *.o
+let dotfiles = [
+\               'nvim',
+\               'kitty',
+\               'sxhkd',
+\               'rofi',
+\               'i3',
+\              ]
+autocmd BufWritePost * if index(dotfiles, expand('%:p:h:t')) >= 0| !cp % ~/Documents/dotfiles/%:p:h:t/%:t
+
 " Quick run via <F5>
 nnoremap <F5> :call <SID>compile_and_run()<CR> 
+nnoremap <leader>n :noh<CR>
 
 function! s:compile_and_run()
     exec 'w'
@@ -74,9 +52,11 @@ function! s:compile_and_run()
     elseif &filetype == 'ada'
 	exec "AsyncRun! gnatmake % -o %<; time ./%<"
     elseif &filetype == 'haskell'
-        exec "AsyncRun! time runhaskell %"
+        exec "AsyncRun! time stack runhaskell %"
     elseif &filetype == 'erlang'
         exec "AsyncRun! time erl %"
+    elseif &filetype == 'javascript'
+        exec "AsyncRun! time rhino %"
     endif
 endfunction
 
@@ -85,14 +65,13 @@ nnoremap <F6> :call <SID>interactive_shell()<CR>
 noremap <leader>l :ALEToggle<CR>
 
 function! s:interactive_shell()
-    exec 'w'
-    exec "split"
-    if &filetype == 'python'
-        exec "terminal ipython % -i"
-    elseif &filetype == 'haskell'
-        exec "terminal ghci % -i"
+    exec 'w | vsp'
+    if &filetype == 'haskell'
+        exec "terminal stack ghci %"
+    elseif &filetype == 'python'
+        exec "terminal ipython -i %"
     elseif &filetype == 'erlang'
-        exec "terminal erl %"
+        exec "terminal erl"
     endif
 endfunction
 
@@ -121,27 +100,28 @@ let g:ale_fixers = {
 \         'remove_trailing_lines',
 \         'hfmt',
 \    ],
+\    'sh' : [
+\         'remove_trailing_lines',
+\         'shfmt',
+\    ],
+\}
+
+let g:ale_linters = {
+\    'haskell': [
+\         'stack-ghc',
+\         'ghc-mod',
+\         'hlint',
+\         'hdevtools',
+\         'hfmt',
+\    ],
 \}
 
 let g:ale_python_flake8_executable = '/usr/bin/flake8'
 let g:ale_python_flake8_use_global = 1
 
-
 " NCM2 tings
-
-autocmd BufEnter * call ncm2#enable_for_buffer()
 
 set completeopt=noinsert,menuone,noselect
 set shortmess+=c
 
 inoremap <c-c> <ESC>
-
-" When the enter key is pressed it closes the autocomplete menu for ncm2
-inoremap <expr> <CR> (pumvisible() ? "\<c-y>" : "\<CR>")
-
-" Use <TAB> to select in the popup menu:
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>" 
-
-" Status bad config
-let g:airline_theme = 'dark_minimal'
