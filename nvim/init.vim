@@ -36,6 +36,7 @@ let g:dotfiles = [
 \                '.profile',
 \                '.bashrc',
 \                '.ghci',
+\                'ipython_config.py',
 \              ]
 
 function! WriteDir()

@@ -63,7 +63,4 @@ Plug 'christoomey/vim-quicklink'
 " Colorscheme
 Plug 'rhysd/vim-color-spring-night'
 
-" Terminal
-Plug 'Shougo/deol.nvim'
-
 call plug#end()
