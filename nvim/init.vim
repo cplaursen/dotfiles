@@ -105,6 +105,11 @@ nmap <silent> <C-K> <C-w>k
 nmap <silent> <C-H> <C-w>h
 nmap <silent> <C-L> <C-w>l
 
+" Remaps for tab navigation
+nnoremap <silent> <A-h> :tabprevious<CR>
+nnoremap <silent> <A-l> :tabnext<CR>
+nnoremap <silent> <A-S-H> :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
+nnoremap <silent> <A-S-L> :execute 'silent! tabmove ' . (tabpagenr()+1)<CR>
 
 " ALE definitions
 
