@@ -29,6 +29,10 @@ Plug 'tpope/vim-fugitive'
 " Status bar theme
 Plug 'itchyny/lightline.vim'
 
+" File fuzzy finder
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
+
 " Directory navigation
 Plug 'scrooloose/nerdtree'
 
@@ -42,6 +46,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'jalvesaq/nvim-r'
 
 " Markdown
+Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 
 " Editing org mode in nvim
