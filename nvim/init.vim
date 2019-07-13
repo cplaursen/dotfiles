@@ -19,10 +19,10 @@ nmap <silent> <leader>e "=nr2char(getchar())<cr>P
 nnoremap Q @@
 " Autocompile TeX files on write
 autocmd BufWritePost *.tex !compiler %
-
-" Open file manager with C-p
-nmap <C-p> :NERDTreeToggle<CR>
-
+" Open file manager
+nnoremap <F2> :NERDTreeToggle<CR>
+" Open fuzzy finder in directory of open file
+nnoremap <F3> :Files %:p:h<CR>
 " Copy dotfiles to my dotfile repo
 let g:dotdirs = [
 \               'nvim',
