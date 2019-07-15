@@ -37,6 +37,10 @@ let g:dotfiles = [
 \                '.profile',
 \                '.bashrc',
 \                '.ghci',
+\                'aliasrc',
+\                'bmdirs',
+\                'bmfiles',
+\                'shortcutrc',
 \                'ipython_config.py',
 \              ]
 
