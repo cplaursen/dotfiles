@@ -30,6 +30,7 @@ let g:dotdirs = [
 \               'sxhkd',
 \               'rofi',
 \               'i3',
+\               'ranger',
 \             ]
 
 let g:dotfiles = [
@@ -41,6 +42,7 @@ let g:dotfiles = [
 
 function! WriteDir()
     if index(g:dotdirs, expand('%:p:h:t')) >= 0
+        !mkdir -p ~/Documents/dotfiles/%:p:h:t
         !cp % ~/Documents/dotfiles/%:p:h:t/%:t 
     endif
 endfunction
