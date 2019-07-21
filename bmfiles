@@ -2,7 +2,6 @@ bf	~/.config/bmfiles
 bd	~/.config/bmdirs
 cfb	~/.bashrc
 cfa	~/.config/aliasrc
-cfz	~/.zshrc
 cfv	~/.config/nvim/init.vim
 cfp ~/.config/nvim/plugins.vim
 cfi	~/.config/i3/config
@@ -16,4 +15,4 @@ cfmb	~/.config/ncmpcpp/bindings
 cfmc	~/.config/ncmpcpp/config
 er	~/Documents/referbib
 cfB	~/.config/i3blocks/config
-cfk	~/.config/sxhkd/sxhkdrc
+cfk	~/.config/kitty/kitty.conf
