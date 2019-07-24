@@ -8,5 +8,4 @@ Features include
 * Rofi, kitty
   + Matching colorschemes
 
-* i3, sxhkd
-  + Shortcuts galore
+* i3, sxhkd and various shortcut files

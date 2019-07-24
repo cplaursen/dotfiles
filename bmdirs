@@ -2,6 +2,7 @@
 h	~/
 d	~/Documents
 D	~/Downloads
+fd  ~/Documents/dotfiles
 m	~/Music
 pp	~/Pictures
 cf	~/.config
