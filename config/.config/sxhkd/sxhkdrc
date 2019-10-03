@@ -1,0 +1,95 @@
+# Basic binds
+super + Return
+	$TERMINAL
+super + d
+	rofi -show run
+super + shift + d
+    $TERMINAL -e mpsyt
+super + shift + a
+    pavucontrol
+super + v
+    $TERMINAL -e cava
+super + w
+	$BROWSER
+super + shift + w
+	$TERMINAL -e nmtui
+super + shift + g
+	gimp
+
+# Et cetera...
+super + grave
+	dmenuunicode
+super + Scroll_Lock
+	killall screenkey || screenkey
+super + Insert
+	showclip
+super + shift + x
+	prompt "Shutdown computer?" "sudo -A shutdown -h now"
+super + shift + BackSpace
+	prompt "Reboot computer?" "sudo -A shutdown -r now"
+super + x
+	mpc pause; pauseallmpv; i3lock -e -f -c 1d2021; xset dpms force off
+XF86Launch1
+	xset dpms force off
+
+# Recording
+# Take screenshot
+Print
+	maim pic-full-$(date '+%y%m%d-%H%M-%S').png
+# Take area screenshot
+super + shift + s
+    maim -s | xclip -selection clipboard -t image/png
+# Pick screenshot type
+shift + Print
+	maimpick
+# Record audio or video
+super + Print
+	dmenurecord
+# kill active recording
+super + Delete
+	dmenurecord kill
+
+# Pause audio
+super + {_,shift +} p
+	lmc {toggle,pause}
+# Changes to next/previous tracks
+super + {comma,period}
+	lmc {prev,next}
+# Restart track
+super + shift + less
+	lmc replay
+# Increase volume
+super + {equal,plus}
+	lmc up {5,15}
+# Decrease volume
+super {_,shift +} + minus
+	lmc down {5,15}
+# Seek foward in song
+super + {_,shift +} bracketright
+	lmc forward {10,120}
+# Seek backward in song
+super + {_,shift +} bracketleft
+	lmc back {10,120}
+
+# Change display
+super + F3
+	displayselect
+# Hibernate
+super + F4
+	prompt 'Hibernate computer?' 'sudo systemctl suspend'
+# Restart/rescan wifi/eth networks
+super + F5
+	sudo -A systemctl restart NetworkManager
+# Mount a USB drive or Android device
+super + F9
+	dmenumount
+# Unmount a USB drive or Android device
+super + F10
+	dmenuumount
+# Search with Duckduckgo
+super + F11
+	ducksearch
+# Network Manager interface
+super + F12
+	$TERMINAL -e sudo -A nmtui
+

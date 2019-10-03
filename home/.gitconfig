@@ -1,0 +1,8 @@
+[user]
+	email = ninja1511@gmail.com
+	name = Christian Pardillo Laursen
+[alias]
+    s = status --short
+    ci = commit
+    br = branch
+    co = checkout
