@@ -2,9 +2,8 @@
 h	~/
 d	~/Documents
 D	~/Downloads
-fd  ~/Documents/dotfiles
 m	~/Music
 pp	~/Pictures
 cf	~/.config
-sc	~/.local/bin
 mn	/mnt
+scr ~/Documents/scratch

@@ -141,8 +141,8 @@ let g:ale_fixers = {
 let g:ale_linters = {
 \    'haskell': [
 \         'stack-ghc',
-\         'ghc-mod',
 \         'hlint',
+\         'ghc-mod',
 \         'hdevtools',
 \         'hfmt',
 \    ],

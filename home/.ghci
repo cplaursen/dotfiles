@@ -1,0 +1,10 @@
+:def hoogle \x -> return $ ":!hoogle \"" ++ x ++ "\""
+:def doc \x -> return $ ":!hoogle --info \"" ++ x ++ "\""
+-- Turn off output for resource usage and types.
+:unset +s +t
+-- Turn on multi-line input
+:set +m -v0
+:seti -XOverloadedStrings
+-- For use with the :e command
+:set editor nvim
+:set prompt "==> "
