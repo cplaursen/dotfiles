@@ -1,0 +1,4 @@
+#!/bin/sh
+# Sets the background. If given an argument, will set file as background.
+[ ! -z "$1" ] && cp "$1" ~/.config/wall.png && notify-send -i "$HOME/.config/wall.png" "Wallpaper changed."
+xwallpaper --output DP1 --zoom $HOME/Pictures/timeless.jpg --output DP3 --zoom $HOME/Pictures/7pm.jpg

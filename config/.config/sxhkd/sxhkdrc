@@ -9,24 +9,8 @@ super + d
 	rofi -show run
 super + shift + d
     $TERMINAL -e mpsyt
-super + r
-	$TERMINAL -e $FILE
-super + e
-	$TERMINAL -e neomutt
-super + m
-	thunderbird
-super + n
-	$TERMINAL -e newsboat
-super + i
-	$TERMINAL -e htop
-super + y
-	$TERMINAL -e calcurse
 super + shift + a
-	$TERMINAL -e pulsemixer; pkill -RTMIN+10 i3blocks
-super + shift + c
-	camtoggle
-super + shift + e
-	tutorialvids
+    pavucontrol
 super + v
     $TERMINAL -e cava
 super + s
@@ -78,15 +62,11 @@ super + {comma,period}
 super + shift + less
 	lmc replay
 # Increase volume
-super + equal
-	lmc up 5
-super + plus
-    amixer -D pulse sset Master 100%
+super + {equal, plus}
+	lmc up {5,15}
 # Decrease volume
-super + minus
-	lmc down 5
-super + shift + minus
-    amixer -D pulse sset Master 0%
+super {_,shift +} + minus
+	lmc down {5,15}
 # Seek foward in song
 super + {_,shift +} bracketright
 	lmc forward {10,120}
@@ -94,11 +74,6 @@ super + {_,shift +} bracketright
 super + {_,shift +} bracketleft
 	lmc back {10,120}
 
-# Function keys
-# Show readme
-super + F1
-	groff -mom $HOME/.local/share/larbs/readme.mom -Tpdf | zathura -
-# F2 is restart in i3 right now.
 # Change display
 super + F3
 	displayselect
@@ -120,5 +95,4 @@ super + F11
 # Network Manager interface
 super + F12
 	$TERMINAL -e sudo -A nmtui
-
 

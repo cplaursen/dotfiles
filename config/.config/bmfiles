@@ -2,8 +2,8 @@ bf	~/.config/bmfiles
 bd	~/.config/bmdirs
 cfb	~/.bashrc
 cfa	~/.config/aliasrc
+cfz	~/.zshrc
 cfv	~/.config/nvim/init.vim
-cfp ~/.config/nvim/plugins.vim
 cfi	~/.config/i3/config
 cfm	~/.config/mutt/muttrc
 eb	~/Documents/LaTeX/uni.bib
@@ -12,4 +12,4 @@ cfd	~/.Xdefaults
 cfx /etc/nixos/configuration.nix
 er	~/Documents/referbib
 cfB	~/.config/i3blocks/config
-cfk	~/.config/kitty/kitty.conf
+cfk	~/.config/sxhkd/sxhkdrc

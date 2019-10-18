@@ -5,6 +5,7 @@ alias ka="killall" \
 	calcurse="calcurse -D ~/.config/calcurse" \
 	magit="nvim -c MagitOnly" \
 	ni="nix-env -f '<nixpkgs>' -Ai" \
+	p="sudo pacman" \
 	SS="sudo systemctl" \
 	f="$FILE" \
 	g="git" \

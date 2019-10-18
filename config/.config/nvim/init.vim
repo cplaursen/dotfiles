@@ -13,6 +13,10 @@ set nu rnu
 set tabstop=4 softtabstop=4 expandtab shiftwidth=4 smarttab
 " Make macros faster
 set lazyredraw
+" See changes made to a file
+:command D w !diff % -
+" Make escape easier to reach
+inoremap <C-c> <ESC>
 " Remap leader e to insert one character
 nmap <silent> <leader>e "=nr2char(getchar())<cr>P
 " Make Q run the last command
@@ -23,42 +27,6 @@ autocmd BufWritePost *.tex !compiler %
 nnoremap <F2> :NERDTreeToggle<CR>
 " Open fuzzy finder in directory of open file
 nnoremap <F3> :Files %:p:h<CR>
-" Copy dotfiles to my dotfile repo
-let g:dotdirs = [
-\               'nvim',
-\               'kitty',
-\               'sxhkd',
-\               'rofi',
-\               'i3',
-\               'ranger',
-\             ]
-
-let g:dotfiles = [
-\                '.profile',
-\                '.bashrc',
-\                '.ghci',
-\                'aliasrc',
-\                'bmdirs',
-\                'bmfiles',
-\                'shortcutrc',
-\                'ipython_config.py',
-\              ]
-
-function! WriteDir()
-    if index(g:dotdirs, expand('%:p:h:t')) >= 0
-        !mkdir -p ~/Documents/dotfiles/%:p:h:t
-        !cp % ~/Documents/dotfiles/%:p:h:t/%:t 
-    endif
-endfunction
-
-function! WriteDot()
-    if index(g:dotfiles, expand('%:t')) >= 0
-        !cp % ~/Documents/dotfiles/%:t
-    endif
-endfunction
-
-autocmd BufWritePost * call WriteDir() | call WriteDot()
-
 
 " Quick run via <F5>
 nnoremap <F5> :call <SID>compile_and_run()<CR> 
@@ -141,8 +109,8 @@ let g:ale_fixers = {
 let g:ale_linters = {
 \    'haskell': [
 \         'stack-ghc',
-\         'hlint',
 \         'ghc-mod',
+\         'hlint',
 \         'hdevtools',
 \         'hfmt',
 \    ],
@@ -151,9 +119,5 @@ let g:ale_linters = {
 let g:ale_python_flake8_executable = '/usr/bin/flake8'
 let g:ale_python_flake8_use_global = 1
 
-" NCM2 tings
-
-set completeopt=noinsert,menuone,noselect
-set shortmess+=c
-
-inoremap <c-c> <ESC>
+" Status bar config
+let g:airline_theme = 'dark_minimal'

@@ -12,7 +12,6 @@ bd="$EDITOR ~/.config/bmdirs" \
 cfb="$EDITOR ~/.bashrc" \
 cfa="$EDITOR ~/.config/aliasrc" \
 cfv="$EDITOR ~/.config/nvim/init.vim" \
-cfp="$EDITOR ~/.config/nvim/plugins.vim" \
 cfi="$EDITOR ~/.config/i3/config" \
 cfm="$EDITOR ~/.config/mutt/muttrc" \
 eb="$EDITOR ~/Documents/LaTeX/uni.bib" \
