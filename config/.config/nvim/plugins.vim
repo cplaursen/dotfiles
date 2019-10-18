@@ -8,9 +8,6 @@ Plug 'skywind3000/asyncrun.vim'
 " Linter
 Plug 'w0rp/ale'
 
-" Completion
-Plug 'neoclide/coc.nvim', {'branch':'release'}
-
 " Show indentation with <Leader>ig
 Plug 'nathanaelkane/vim-indent-guides'
 

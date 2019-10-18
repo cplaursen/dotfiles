@@ -7,4 +7,4 @@
 :seti -XOverloadedStrings
 -- For use with the :e command
 :set editor nvim
-:set prompt "==> "
+:set prompt "λ "
