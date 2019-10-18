@@ -3,6 +3,8 @@ filetype off
 
 call plug#begin('~/.config/nvim/plugged')
 
+Plug 'rhysd/vim-color-spring-night'
+
 " Run programs
 Plug 'skywind3000/asyncrun.vim'
 
