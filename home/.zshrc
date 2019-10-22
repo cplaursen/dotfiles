@@ -37,7 +37,7 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/chris/.xmonad/bin:/home/chris/.xmonad/bin:$PATH"
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:$HOME/.xmonad/bin:$HOME/.xmonad/bin:$HOME/.cask/bin:$PATH"
 
 function r {
     tempfile="$(mktemp -t tmp.XXXXXX)"

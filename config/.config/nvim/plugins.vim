@@ -5,6 +5,8 @@ call plug#begin('~/.config/nvim/plugged')
 
 Plug 'rhysd/vim-color-spring-night'
 
+Plug 'sheerun/vim-polyglot'
+
 " Run programs
 Plug 'skywind3000/asyncrun.vim'
 
