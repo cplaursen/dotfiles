@@ -28,6 +28,9 @@ Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
+" File manager
+Plug 'scrooloose/nerdtree'
+
 " Buffer navigation, use <Leader>b to open menu
 Plug 'jeetsukumaran/vim-buffergator'
 
