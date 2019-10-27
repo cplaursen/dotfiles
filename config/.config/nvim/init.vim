@@ -47,7 +47,7 @@ function! s:compile_and_run()
     elseif &filetype == 'ada'
 	exec "AsyncRun! gnatmake % -o %<; time ./%<"
     elseif &filetype == 'haskell'
-        exec "AsyncRun! time stack runhaskell %"
+        exec "AsyncRun! time runhaskell %"
     elseif &filetype == 'erlang'
         exec "AsyncRun! time erl %"
     elseif &filetype == 'javascript'
@@ -62,7 +62,7 @@ noremap <leader>l :ALEToggle<CR>
 function! s:interactive_shell()
     exec 'w | vsp'
     if &filetype == 'haskell'
-        exec "terminal stack ghci %"
+        exec "terminal ghci %"
     elseif &filetype == 'python'
         exec "terminal ipython -i %"
     elseif &filetype == 'erlang'
@@ -88,7 +88,7 @@ nnoremap <silent> <A-S-L> :execute 'silent! tabmove ' . (tabpagenr()+1)<CR>
 " ALE definitions
 
 nmap <F8> <Plug>(ale_fix)
-let g:ale_lint_on_save = 1
+let g:ale_lint_on_save = 0
 let g:ale_lint_on_filetype_changed = 0
 let g:ale_fixers = {
 \    'python': [
@@ -108,11 +108,7 @@ let g:ale_fixers = {
 
 let g:ale_linters = {
 \    'haskell': [
-\         'stack-ghc',
-\         'ghc-mod',
 \         'hlint',
-\         'hdevtools',
-\         'hfmt',
 \    ],
 \}
 
@@ -121,3 +117,8 @@ let g:ale_python_flake8_use_global = 1
 
 " Status bar config
 let g:airline_theme = 'dark_minimal'
+
+" Snippets
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
