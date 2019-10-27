@@ -8,6 +8,7 @@ Plug 'rhysd/vim-color-spring-night'
 
 " Languages
 Plug 'sheerun/vim-polyglot'
+
 " Run programs
 Plug 'skywind3000/asyncrun.vim'
 
