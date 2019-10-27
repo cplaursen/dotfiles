@@ -3,8 +3,11 @@ filetype off
 
 call plug#begin('~/.config/nvim/plugged')
 
+" Colorscheme
 Plug 'rhysd/vim-color-spring-night'
 
+" Languages
+Plug 'sheerun/vim-polyglot'
 " Run programs
 Plug 'skywind3000/asyncrun.vim'
 
@@ -53,5 +56,9 @@ Plug 'junegunn/goyo.vim'
 " Look up things
 Plug 'mattn/webapi-vim'
 Plug 'christoomey/vim-quicklink'
+
+" Snippets
+Plug 'sirver/ultisnips'
+Plug 'honza/vim-snippets'
 
 call plug#end()
