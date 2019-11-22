@@ -8,6 +8,7 @@ Plug 'rhysd/vim-color-spring-night'
 
 " Languages
 Plug 'sheerun/vim-polyglot'
+Plug 'jez/vim-better-sml'
 
 " Run programs
 Plug 'skywind3000/asyncrun.vim'
@@ -43,13 +44,10 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'jalvesaq/nvim-r'
 
 " Markdown
-Plug 'plasticboy/vim-markdown'
+Plug 'tpope/vim-markdown'
 
 " Editing org mode in nvim
 Plug 'jceb/vim-orgmode'
-
-" Editing haskell in vim
-Plug 'neovimhaskell/haskell-vim'
  
 " Yesod
 Plug 'pbrisbin/vim-syntax-shakespeare'
