@@ -1,7 +1,7 @@
 # Snippets defined by me 
-snippet cv
-	import cv2 as cv
+snippet imports
 	import numpy as np
+	import matplotlib.pyplot as plt
 
 # From plugin
 snippet #!
@@ -13,6 +13,8 @@ snippet #!3
 	#!/usr/bin/env python3
 snippet imp
 	import ${0:module}
+snippet impas
+	import ${1:module} as ${0:name}
 snippet uni
 	def __unicode__(self):
 		${0:representation}
@@ -381,7 +383,7 @@ snippet repr "methods implementing string representation"
 
 # note: reflected operands and augmented arithmeitc assignements have been
 # intentionally ommited to reduce verbosity.
-snippej numeric "methods for emulating a numeric type" b
+snippet numeric "methods for emulating a numeric type" b
 	def __add__(self, other):
 		${1:pass}
 

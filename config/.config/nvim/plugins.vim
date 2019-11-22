@@ -8,6 +8,7 @@ Plug 'rhysd/vim-color-spring-night'
 
 " Languages
 Plug 'sheerun/vim-polyglot'
+Plug 'lervag/vimtex'
 
 " Run programs
 Plug 'skywind3000/asyncrun.vim'
@@ -39,9 +40,6 @@ Plug 'ctrlpvim/ctrlp.vim'
 " Editing R in nvim
 Plug 'jalvesaq/nvim-r'
 
-" Markdown
-Plug 'plasticboy/vim-markdown'
-
 " Editing org mode in nvim
 Plug 'jceb/vim-orgmode'
 
@@ -63,3 +61,5 @@ Plug 'sirver/ultisnips'
 Plug 'honza/vim-snippets'
 
 call plug#end()
+
+let g:polyglot_disabled = ['latex']
