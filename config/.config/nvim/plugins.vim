@@ -9,6 +9,7 @@ Plug 'rhysd/vim-color-spring-night'
 " Languages
 Plug 'sheerun/vim-polyglot'
 Plug 'lervag/vimtex'
+Plug 'jez/vim-better-sml'
 
 " Run programs
 Plug 'skywind3000/asyncrun.vim'
@@ -31,6 +32,9 @@ Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
+" File manager
+Plug 'scrooloose/nerdtree'
+
 " Buffer navigation, use <Leader>b to open menu
 Plug 'jeetsukumaran/vim-buffergator'
 
@@ -39,6 +43,9 @@ Plug 'ctrlpvim/ctrlp.vim'
 
 " Editing R in nvim
 Plug 'jalvesaq/nvim-r'
+
+" Markdown
+Plug 'tpope/vim-markdown'
 
 " Editing org mode in nvim
 Plug 'jceb/vim-orgmode'
@@ -61,5 +68,3 @@ Plug 'sirver/ultisnips'
 Plug 'honza/vim-snippets'
 
 call plug#end()
-
-let g:polyglot_disabled = ['latex']

@@ -23,6 +23,8 @@ nmap <silent> <leader>e "=nr2char(getchar())<cr>P
 nnoremap Q @@
 " Autocompile TeX files on write
 autocmd BufWritePost *.tex !compiler %
+" Set filetype of ML files
+autocmd BufEnter *.ML set filetype=sml
 " Open file manager
 nnoremap <F2> :NERDTreeToggle<CR>
 " Open fuzzy finder in directory of open file
@@ -122,3 +124,7 @@ let g:airline_theme = 'dark_minimal'
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" LaTeX
+set grepprg=grep\ -nH\ $*
+let g:tex_flavor = "latex"
