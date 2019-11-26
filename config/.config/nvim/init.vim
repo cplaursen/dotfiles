@@ -23,8 +23,6 @@ inoremap <C-c> <ESC>
 nmap <silent> <leader>e "=nr2char(getchar())<cr>P
 " Make Q run the last command
 nnoremap Q @@
-" Autocompile TeX files on write
-autocmd BufWritePost *.tex !compiler %
 " Set filetype of ML files
 autocmd BufEnter *.ML set filetype=sml
 " Open file manager
