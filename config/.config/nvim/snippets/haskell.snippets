@@ -39,6 +39,12 @@ snippet da
 	data ${1:Type} = ${2:$1} ${0:Int}
 snippet data
 	data ${1:Type} = ${2:$1} ${0:Int}
+snippet drec
+	data ${1:Type} = ${2:$1}
+		{ ${3:r1} :: ${4:t1}
+		, ${5:r2} :: ${0:t2}
+		} deriving (Show)
+		
 snippet newtype
 	newtype ${1:Type} = ${2:$1} ${0:Int}
 snippet class
