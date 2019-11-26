@@ -68,3 +68,5 @@ Plug 'sirver/ultisnips'
 Plug 'honza/vim-snippets'
 
 call plug#end()
+
+let g:polyglot_disabled=['latex']

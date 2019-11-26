@@ -13,6 +13,8 @@ set nu rnu
 set tabstop=4 softtabstop=4 expandtab shiftwidth=4 smarttab
 " Make macros faster
 set lazyredraw
+" Remove folds
+set nofen            
 " See changes made to a file
 :command D w !diff % -
 " Make escape easier to reach
@@ -128,3 +130,4 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 " LaTeX
 set grepprg=grep\ -nH\ $*
 let g:tex_flavor = "latex"
+let g:vimtex_view_method = "zathura"
