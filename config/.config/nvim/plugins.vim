@@ -10,6 +10,9 @@ Plug 'rhysd/vim-color-spring-night'
 Plug 'sheerun/vim-polyglot'
 Plug 'lervag/vimtex'
 Plug 'jez/vim-better-sml'
+Plug 'jalvesaq/nvim-r'
+Plug 'jceb/vim-orgmode'
+Plug 'pbrisbin/vim-syntax-shakespeare'
 
 " Run programs
 Plug 'skywind3000/asyncrun.vim'
@@ -41,32 +44,20 @@ Plug 'jeetsukumaran/vim-buffergator'
 " Buffer fuzzy finder
 Plug 'ctrlpvim/ctrlp.vim'
 
-" Editing R in nvim
-Plug 'jalvesaq/nvim-r'
-
-" Markdown
-Plug 'tpope/vim-markdown'
-
-" Editing org mode in nvim
-Plug 'jceb/vim-orgmode'
-
-" Editing haskell in vim
-Plug 'neovimhaskell/haskell-vim'
- 
-" Yesod
-Plug 'pbrisbin/vim-syntax-shakespeare'
-
-" Distraction-free writing
+" Writing
+Plug 'reedes/vim-pencil'
 Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
+Plug 'dbmrq/vim-ditto'
+Plug 'reedes/vim-wordchipper'
 
-" Look up things
-Plug 'mattn/webapi-vim'
-Plug 'christoomey/vim-quicklink'
 
 " Snippets
 Plug 'sirver/ultisnips'
 Plug 'honza/vim-snippets'
 
+" Task manager
+Plug 'blindFS/vim-taskwarrior'
 call plug#end()
 
 let g:polyglot_disabled=['latex']

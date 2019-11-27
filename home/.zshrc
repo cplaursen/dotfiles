@@ -14,7 +14,7 @@ export ZSH_THEME="theunraveler"
 # CASE_SENSITIVE="true"
 
 # Comment this out to disable weekly auto-update checks
-# DISABLE_AUTO_UPDATE="true"
+DISABLE_AUTO_UPDATE="true"
 
 # Uncomment following line if you want to disable colors in ls
 # DISABLE_LS_COLORS="true"
@@ -29,7 +29,9 @@ export ZSH_THEME="theunraveler"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(
+    cabal
     git
+    stack
     vi-mode
     z
 )
@@ -49,5 +51,4 @@ function r {
     rm -f -- "$tempfile"
 }
 
-ghosts
-
+ghosts 

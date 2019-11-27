@@ -17,14 +17,14 @@ set lazyredraw
 set nofen            
 " See changes made to a file
 :command D w !diff % -
+" Word count in file
+:command Count w !texcount -
 " Make escape easier to reach
 inoremap <C-c> <ESC>
 " Remap leader e to insert one character
 nmap <silent> <leader>e "=nr2char(getchar())<cr>P
 " Make Q run the last command
 nnoremap Q @@
-" Autocompile TeX files on write
-autocmd BufWritePost *.tex !compiler %
 " Set filetype of ML files
 autocmd BufEnter *.ML set filetype=sml
 " Open file manager
@@ -131,3 +131,21 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 set grepprg=grep\ -nH\ $*
 let g:tex_flavor = "latex"
 let g:vimtex_view_method = "zathura"
+
+" Disable folds
+let Tex_FoldedSections=""
+let Tex_FoldedEnvironments=""
+let Tex_FoldedMisc=""
+
+" Goyo
+autocmd! User GoyoEnter Limelight
+autocmd! User GoyoLeave Limelight!
+
+" Pencil
+augroup pencil
+    autocmd!
+    autocmd FileType tex call pencil#init()
+
+augroup END
+
+let g:pencil#wrapModeDefault = 'soft'
