@@ -31,7 +31,6 @@ autocmd BufEnter *.ML set filetype=sml
 nnoremap <F2> :NERDTreeToggle<CR>
 " Open fuzzy finder in directory of open file
 nnoremap <F3> :Files %:p:h<CR>
-
 " Quick run via <F5>
 nnoremap <F5> :call <SID>compile_and_run()<CR> 
 nnoremap <leader>n :noh<CR>
@@ -131,6 +130,7 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 set grepprg=grep\ -nH\ $*
 let g:tex_flavor = "latex"
 let g:vimtex_view_method = "zathura"
+autocmd FileType tex set spell spelllang=en_gb
 
 " Disable folds
 let Tex_FoldedSections=""
@@ -140,12 +140,12 @@ let Tex_FoldedMisc=""
 " Goyo
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
+nnoremap <leader>g :Goyo<CR>
 
 " Pencil
 augroup pencil
     autocmd!
     autocmd FileType tex call pencil#init()
-
 augroup END
 
 let g:pencil#wrapModeDefault = 'soft'

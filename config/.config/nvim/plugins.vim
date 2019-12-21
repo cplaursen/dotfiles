@@ -14,6 +14,9 @@ Plug 'jalvesaq/nvim-r'
 Plug 'jceb/vim-orgmode'
 Plug 'pbrisbin/vim-syntax-shakespeare'
 
+" Better motions
+Plug 'easymotion/vim-easymotion'
+
 " Run programs
 Plug 'skywind3000/asyncrun.vim'
 
@@ -50,7 +53,7 @@ Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'dbmrq/vim-ditto'
 Plug 'reedes/vim-wordchipper'
-
+Plug 'rhysd/vim-grammarous'
 
 " Snippets
 Plug 'sirver/ultisnips'
