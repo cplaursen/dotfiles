@@ -14,14 +14,14 @@ Plug 'jalvesaq/nvim-r'
 Plug 'jceb/vim-orgmode'
 Plug 'pbrisbin/vim-syntax-shakespeare'
 
+" Completion
+Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+
 " Better motions
 Plug 'easymotion/vim-easymotion'
 
 " Run programs
 Plug 'skywind3000/asyncrun.vim'
-
-" Linter
-Plug 'w0rp/ale'
 
 " Show indentation with <Leader>ig
 Plug 'nathanaelkane/vim-indent-guides'
@@ -56,7 +56,6 @@ Plug 'reedes/vim-wordchipper'
 Plug 'rhysd/vim-grammarous'
 
 " Snippets
-Plug 'sirver/ultisnips'
 Plug 'honza/vim-snippets'
 
 " Task manager

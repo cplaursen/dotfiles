@@ -15,6 +15,8 @@ set tabstop=4 softtabstop=4 expandtab shiftwidth=4 smarttab
 set lazyredraw
 " Remove folds
 set nofen            
+" Behave better on small screen
+set nowrap
 " See changes made to a file
 :command D w !diff % -
 " Word count in file
@@ -60,7 +62,6 @@ endfunction
 
 " Run in interactive shell and switch to it via <F6>
 nnoremap <F6> :call <SID>interactive_shell()<CR>
-noremap <leader>l :ALEToggle<CR>
 
 function! s:interactive_shell()
     exec 'w | vsp'
@@ -88,43 +89,8 @@ nnoremap <silent> <A-l> :tabnext<CR>
 nnoremap <silent> <A-S-H> :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
 nnoremap <silent> <A-S-L> :execute 'silent! tabmove ' . (tabpagenr()+1)<CR>
 
-" ALE definitions
-
-nmap <F8> <Plug>(ale_fix)
-let g:ale_lint_on_save = 0
-let g:ale_lint_on_filetype_changed = 0
-let g:ale_fixers = {
-\    'python': [
-\        'remove_trailing_lines',
-\        'isort',
-\        'yapf',
-\    ],
-\    'haskell': [
-\         'remove_trailing_lines',
-\         'hfmt',
-\    ],
-\    'sh' : [
-\         'remove_trailing_lines',
-\         'shfmt',
-\    ],
-\}
-
-let g:ale_linters = {
-\    'haskell': [
-\         'hlint',
-\    ],
-\}
-
-let g:ale_python_flake8_executable = '/usr/bin/flake8'
-let g:ale_python_flake8_use_global = 1
-
 " Status bar config
 let g:airline_theme = 'dark_minimal'
-
-" Snippets
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " LaTeX
 set grepprg=grep\ -nH\ $*
@@ -149,3 +115,6 @@ augroup pencil
 augroup END
 
 let g:pencil#wrapModeDefault = 'soft'
+
+" CoC
+source ~/.config/nvim/coc.vim 
