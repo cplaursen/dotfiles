@@ -64,12 +64,14 @@ endfunction
 nnoremap <F6> :call <SID>interactive_shell()<CR>
 
 function! s:interactive_shell()
-    exec 'w | vsp'
     if &filetype == 'haskell'
+        exec 'w | vsp'
         exec "terminal ghci %"
     elseif &filetype == 'python'
+        exec 'w | vsp'
         exec "terminal ipython -i %"
     elseif &filetype == 'erlang'
+        exec 'w | vsp'
         exec "terminal erl"
     endif
 endfunction
