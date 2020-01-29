@@ -1,4 +1,5 @@
 syntax on
+
 source ~/.config/nvim/plugins.vim
 filetype plugin indent on
 
@@ -120,3 +121,4 @@ let g:pencil#wrapModeDefault = 'soft'
 
 " CoC
 source ~/.config/nvim/coc.vim 
+
