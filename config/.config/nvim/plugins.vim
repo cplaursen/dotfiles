@@ -58,8 +58,6 @@ Plug 'rhysd/vim-grammarous'
 " Snippets
 Plug 'honza/vim-snippets'
 
-" Task manager
-Plug 'blindFS/vim-taskwarrior'
 call plug#end()
 
 let g:polyglot_disabled=['latex']
