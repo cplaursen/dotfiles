@@ -22,9 +22,6 @@ git_branch() {
 }
 
 
-# Add git completion
-. git-completion.bash
-
 function countdown(){
    date1=$((`date +%s` + $1)); 
    while [ "$date1" -ge `date +%s` ]; do 
