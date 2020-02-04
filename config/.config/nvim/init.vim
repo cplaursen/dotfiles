@@ -122,3 +122,6 @@ let g:pencil#wrapModeDefault = 'soft'
 " CoC
 source ~/.config/nvim/coc.vim 
 
+"Coq
+autocmd! Filetype v set filetype=coq
+
