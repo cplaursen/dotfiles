@@ -8,8 +8,9 @@
     ]);
     pyEnv = self.python3.withPackages
     (python-packages: with python-packages; [
-      scikitlearn numpy matplotlib pandas pillow click pyfiglet
+      scikitlearn numpy matplotlib pandas pillow click pyfiglet pystan
     ]);
   };
   allowBroken = true;
+  allowUnfree = true;
 }
