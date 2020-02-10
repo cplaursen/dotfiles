@@ -13,6 +13,8 @@ Plug 'jez/vim-better-sml'
 Plug 'jalvesaq/nvim-r'
 Plug 'jceb/vim-orgmode'
 Plug 'pbrisbin/vim-syntax-shakespeare'
+Plug 'the-lambda-church/coquille'
+Plug 'let-def/vimbufsync'
 
 " Completion
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}

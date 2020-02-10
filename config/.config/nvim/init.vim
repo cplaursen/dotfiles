@@ -137,3 +137,4 @@ nmap [d <Plug>DittoLess                " Show the previous matches
 
 " CoC
 source ~/.config/nvim/coc.vim 
+
