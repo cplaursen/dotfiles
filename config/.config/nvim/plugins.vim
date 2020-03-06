@@ -15,6 +15,7 @@ Plug 'jceb/vim-orgmode'
 Plug 'pbrisbin/vim-syntax-shakespeare'
 Plug 'the-lambda-church/coquille'
 Plug 'let-def/vimbufsync'
+Plug 'eigenfoo/stan-vim'
 
 " Completion
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
