@@ -6,5 +6,6 @@ m	~/Music
 pp	~/Pictures
 vv	~/Videos
 cf	~/.config
+cfv ~/.config/nvim
 mn	/mnt
 scr ~/Documents/scratch

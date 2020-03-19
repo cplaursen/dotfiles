@@ -3,14 +3,16 @@ filetype off
 
 call plug#begin('~/.config/nvim/plugged')
 
-" Colorscheme
+" Colorschemes
 Plug 'rhysd/vim-color-spring-night'
+Plug 'marlun/vim-starwars'
 
 " Languages
 Plug 'sheerun/vim-polyglot'
 Plug 'lervag/vimtex'
 Plug 'jez/vim-better-sml'
 Plug 'jalvesaq/nvim-r'
+Plug 'sophacles/vim-processing'
 Plug 'jceb/vim-orgmode'
 Plug 'pbrisbin/vim-syntax-shakespeare'
 Plug 'the-lambda-church/coquille'

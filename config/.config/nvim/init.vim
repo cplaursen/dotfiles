@@ -3,10 +3,6 @@ syntax on
 source ~/.config/nvim/plugins.vim
 filetype plugin indent on
 
-" Isabelle
-source ~/.config/nvim/my_plugs/isabelle.vim
-source ~/.config/nvim/my_plugs/root.vim
-
 colorscheme spring-night
 set termguicolors
 
@@ -118,8 +114,7 @@ nnoremap <leader>g :Goyo<CR>
 " Pencil
 augroup pencil
     autocmd!
-    autocmd FileType markdown,mkd call pencil#init()
-    autocmd FileType tex call pencil#init()
+    autocmd FileType markdown,mkd,tex call pencil#init()
 augroup END
 
 let g:pencil#wrapModeDefault = 'soft'
@@ -134,7 +129,34 @@ nmap _d <Plug>DittoBad                 " Stop ignoring the word under the cursor
 nmap ]d <Plug>DittoMore                " Show the next matches
 nmap [d <Plug>DittoLess                " Show the previous matches
 
+" SML
+augroup vimbettersml
+  au!  
+  " ----- Keybindings -----
+
+  au FileType sml nnoremap <silent> <buffer> <leader>t :SMLTypeQuery<CR>
+  au FileType sml nnoremap <silent> <buffer> gd :SMLJumpToDef<CR>
+
+  " open the REPL terminal buffer
+  au FileType sml nnoremap <silent> <buffer> <leader>is :SMLReplStart<CR>
+  " close the REPL (mnemonic: k -> kill)
+  au FileType sml nnoremap <silent> <buffer> <leader>ik :SMLReplStop<CR>
+  " build the project (using CM if possible)
+  au FileType sml nnoremap <silent> <buffer> <leader>ib :SMLReplBuild<CR>
+  " for opening a structure, not a file
+  au FileType sml nnoremap <silent> <buffer> <leader>io :SMLReplOpen<CR>
+  " use the current file into the REPL (even if using CM)
+  au FileType sml nnoremap <silent> <buffer> <leader>iu :SMLReplUse<CR>
+  " clear the REPL screen
+  au FileType sml nnoremap <silent> <buffer> <leader>ic :SMLReplClear<CR>
+  " set the print depth to 100
+  au FileType sml nnoremap <silent> <buffer> <leader>ip :SMLReplPrintDepth<CR>
+  " Conceal characters
+  " au FileType sml setlocal conceallevel=2 
+  " Same-width conceal characters
+  let g:sml_greek_tyvar_show_tick = 1
+augroup END
+
 
 " CoC
 source ~/.config/nvim/coc.vim 
-
