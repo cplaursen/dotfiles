@@ -29,3 +29,5 @@ function countdown(){
      sleep 0.1
    done
 }
+
+source /home/chris/.config/broot/launcher/bash/br
