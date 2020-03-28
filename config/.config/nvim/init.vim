@@ -3,7 +3,7 @@ syntax on
 source ~/.config/nvim/plugins.vim
 filetype plugin indent on
 
-colorscheme spring-night
+colorscheme badwolf
 set termguicolors
 
 " Map the leader key to SPACE
@@ -70,7 +70,7 @@ function! s:interactive_shell()
         exec "terminal ghci %"
     elseif &filetype == 'python'
         exec 'w | vsp'
-        exec "terminal ipython -i %"
+        exec "terminal python3 -i %"
     elseif &filetype == 'erlang'
         exec 'w | vsp'
         exec "terminal erl"
@@ -157,6 +157,9 @@ augroup vimbettersml
   let g:sml_greek_tyvar_show_tick = 1
 augroup END
 
-
 " CoC
 source ~/.config/nvim/coc.vim 
+
+" Isabelle
+let g:isabelle_abbreviations = 1
+let g:isabelle_tex = 1

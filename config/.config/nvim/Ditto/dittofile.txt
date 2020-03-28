@@ -6,3 +6,7 @@ section
 subsection
 texttt
 mathbb
+usepackage
+Dense
+dense
+None

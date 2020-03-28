@@ -5,7 +5,7 @@ call plug#begin('~/.config/nvim/plugged')
 
 " Colorschemes
 Plug 'rhysd/vim-color-spring-night'
-Plug 'marlun/vim-starwars'
+Plug 'sjl/badwolf'
 
 " Languages
 Plug 'sheerun/vim-polyglot'
@@ -18,6 +18,10 @@ Plug 'pbrisbin/vim-syntax-shakespeare'
 Plug 'the-lambda-church/coquille'
 Plug 'let-def/vimbufsync'
 Plug 'eigenfoo/stan-vim'
+
+" Experimental
+Plug 'cplaursen/vim-isabelle'
+Plug 'cplaursen/vim-potion'
 
 " Completion
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}

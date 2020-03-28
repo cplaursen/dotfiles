@@ -2,7 +2,7 @@
 # Profile file. Runs on login.
 
 # Adds `~/.scripts` and all subdirectories to $PATH
-export PATH="$PATH:/home/chris/.local/bin/:/home/chris/.local/bin/i3cmds:/home/chris/.local/bin/tools"
+export PATH="$PATH:/home/chris/.local/bin/:/home/chris/.local/bin/i3cmds:/home/chris/.local/bin/tools:/home/chris/.cargo/bin"
 export EDITOR="nvim"
 export TERMINAL="kitty"
 export BROWSER="firefox"
@@ -23,6 +23,9 @@ export LESS_TERMCAP_so="$(printf '%b' '[01;44;33m')"; a="${a%_}"
 export LESS_TERMCAP_se="$(printf '%b' '[0m')"; a="${a%_}"
 export LESS_TERMCAP_us="$(printf '%b' '[1;32m')"; a="${a%_}"
 export LESS_TERMCAP_ue="$(printf '%b' '[0m')"; a="${a%_}"
+
+# change ackrc location
+export ACKRC="$HOME/.config/ackrc"
 
 mpd >/dev/null 2>&1 &
 
