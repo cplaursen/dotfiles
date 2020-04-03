@@ -3,19 +3,23 @@ filetype off
 
 call plug#begin('~/.config/nvim/plugged')
 
-" Colorscheme
+" Colorschemes
 Plug 'rhysd/vim-color-spring-night'
+Plug 'sjl/badwolf'
 
 " Languages
 Plug 'sheerun/vim-polyglot'
 Plug 'lervag/vimtex'
 Plug 'jez/vim-better-sml'
 Plug 'jalvesaq/nvim-r'
+Plug 'sophacles/vim-processing'
 Plug 'jceb/vim-orgmode'
 Plug 'pbrisbin/vim-syntax-shakespeare'
-Plug 'the-lambda-church/coquille'
-Plug 'let-def/vimbufsync'
 Plug 'eigenfoo/stan-vim'
+
+" Experimental
+Plug 'cplaursen/vim-isabelle'
+Plug 'cplaursen/vim-potion'
 
 " Completion
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
@@ -34,9 +38,6 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-eunuch'
 
-" Git wrapper, commands look like :G<command> or :Git <command>
-Plug 'tpope/vim-fugitive'
-
 " Status bar theme
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -47,9 +48,6 @@ Plug 'scrooloose/nerdtree'
 " Buffer navigation, use <Leader>b to open menu
 Plug 'jeetsukumaran/vim-buffergator'
 
-" Buffer fuzzy finder
-Plug 'ctrlpvim/ctrlp.vim'
-
 " Writing
 Plug 'reedes/vim-pencil'
 Plug 'junegunn/goyo.vim'
@@ -57,6 +55,7 @@ Plug 'junegunn/limelight.vim'
 Plug 'dbmrq/vim-ditto'
 Plug 'reedes/vim-wordchipper'
 Plug 'rhysd/vim-grammarous'
+Plug 'vimwiki/vimwiki'
 
 " Snippets
 Plug 'honza/vim-snippets'

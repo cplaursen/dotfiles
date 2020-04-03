@@ -1,2 +1,13 @@
 item
-with
+this
+cite
+Isabelle
+section
+subsection
+texttt
+mathbb
+usepackage
+Dense
+dense
+None
+.

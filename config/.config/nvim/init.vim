@@ -3,13 +3,13 @@ syntax on
 source ~/.config/nvim/plugins.vim
 filetype plugin indent on
 
-" Isabelle
-source ~/.config/nvim/my_plugs/isabelle.vim
-source ~/.config/nvim/my_plugs/root.vim
-
-colorscheme spring-night
+colorscheme badwolf
 set termguicolors
 
+" Use jk to exit insert mode
+inoremap jk <ESC>
+" Disable ESC to force myself to learn jk
+inoremap <ESC> <nop>
 " Map the leader key to SPACE
 let mapleader="\<SPACE>"
 " Add line numbers
@@ -26,8 +26,6 @@ set nowrap
 :command D w !diff % -
 " Word count in file
 :command Count w !texcount -
-" Make escape easier to reach
-inoremap <C-c> <ESC>
 " Remap leader e to insert one character
 nmap <silent> <leader>e "=nr2char(getchar())<cr>P
 " Make Q run the last command
@@ -74,7 +72,7 @@ function! s:interactive_shell()
         exec "terminal ghci %"
     elseif &filetype == 'python'
         exec 'w | vsp'
-        exec "terminal ipython -i %"
+        exec "terminal python3 -i %"
     elseif &filetype == 'erlang'
         exec 'w | vsp'
         exec "terminal erl"
@@ -118,8 +116,7 @@ nnoremap <leader>g :Goyo<CR>
 " Pencil
 augroup pencil
     autocmd!
-    autocmd FileType markdown,mkd call pencil#init()
-    autocmd FileType tex call pencil#init()
+    autocmd FileType markdown,mkd,tex call pencil#init()
 augroup END
 
 let g:pencil#wrapModeDefault = 'soft'
@@ -137,4 +134,20 @@ nmap [d <Plug>DittoLess                " Show the previous matches
 
 " CoC
 source ~/.config/nvim/coc.vim 
+
+" Isabelle
+let g:isabelle_abbreviations = 1
+let g:isabelle_tex = 1
+
+" Vimwiki
+let g:vimwiki_list = [{'path': '~/Documents/vimwiki', 'syntax': 'markdown', 'ext': '.md'}]
+
+" Vim pager
+if !exists('g:vimpager')
+  let g:vimpager = {}
+endif
+
+if !exists('g:less')
+  let g:less     = {}
+endif
 

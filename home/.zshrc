@@ -52,3 +52,5 @@ function r {
 }
 
 ghosts 
+
+source /home/chris/.config/broot/launcher/bash/br
