@@ -5,8 +5,8 @@
 export PATH="$PATH:/home/chris/.local/bin/:/home/chris/.local/bin/i3cmds:/home/chris/.local/bin/tools:/home/chris/.cargo/bin"
 export EDITOR="nvim"
 export PAGER="vimpager"
-export TERMINAL="kitty -e tmux"
-export BROWSER="brave-browser"
+export TERMINAL="kitty"
+export BROWSER="brave"
 export READER="zathura"
 export FILE="ranger"
 export BIB="$HOME/Documents/LaTeX/uni.bib"
@@ -56,3 +56,5 @@ fi
 if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
+
+xset r rate 220 40

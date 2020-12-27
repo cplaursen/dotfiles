@@ -1,13 +1,15 @@
-# Luke's lf settings
-
 # Basic vars
 set shell sh
 set previewer ~/.config/lf/scope
+set dircounts true
 set shellopts '-eu'
 set ifs "\n"
 set scrolloff 10
-set color256
 set info size
+
+set hiddenfiles ".*:*.log:*.aux:*.bbl:*.bcf:*.synctex.gz:
+                 :*.blg:*.run.xml:*.fdb_latexmk:*.fls:*.cls:*.sty:*.out:
+                 :*~"
 
 # cmds/functions
 cmd open ${{
@@ -19,7 +21,7 @@ cmd open ${{
 	audio/*) mpv --input-ipc-server=/tmp/mpvsoc$(date +%%s) $f ;;
 	video/*) setsid mpv --input-ipc-server=/tmp/mpvsoc$(date +%%s) $f -quiet >/dev/null 2>&1 & ;;
 	application/pdf) setsid zathura $fx >/dev/null 2>&1 & ;;
-        *) for f in $fx; do setsid $OPENER $f >/dev/null 2>&1 & done;;
+        *) $EDITOR $fx ;;
     esac
 }}
 
@@ -62,13 +64,36 @@ map C copyto
 map M moveto
 map a push %mkdir<space>
 map <insert> push %touch<space>
-map r push :rename<space>
+
+# Unmap the default binding
+map r
+# Rename the file with a completely different name
+map rc push :rename<space>
+# Edit the current filename
+map ra ${{
+	# get 'basename' of the selection
+	filename="${f##*/}"
+	# quote it so we won't deal with quotes in the lf -remote command
+	filename="$(printf '%q' "$filename")"
+	filename="${filename// /<space>}"
+	lf -remote "send $id push :rename<space>$filename"
+}}
+# Edit filename before the extension
+map re ${{
+	# get 'basename' of the selection
+	filename="${f##*/}"
+	# quote it so we won't deal with quotes in the lf -remote command
+	filename="$(printf '%q' "$filename")"
+	filename="${filename// /<space>}"
+	lf -remote "send $id push :rename<space>$filename<a-b><c-b>"
+}}
 map R $lf -remote "send $id push :rename<space>$f"
+
 map b bulkrename
 map <c-r> reload
 map <enter> shell
-map <bs2> set hidden!
+map <backspace2> set hidden!
 map x $$f
-map X !$f
+map X !extract $f
 map o &mimeopen "$f"
 map O $mimeopen --ask "$f"

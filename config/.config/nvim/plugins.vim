@@ -16,19 +16,20 @@ Plug 'sophacles/vim-processing'
 Plug 'jceb/vim-orgmode'
 Plug 'pbrisbin/vim-syntax-shakespeare'
 Plug 'eigenfoo/stan-vim'
+Plug 'wlangstroth/vim-racket'
+Plug 'felipesere/pie-highlight.vim' 
+Plug 'jvoorhis/coq.vim'
+Plug 'mlr-msft/vim-loves-dafny', {'for': 'dafny'}
 
 " Experimental
 Plug 'cplaursen/vim-isabelle'
 Plug 'cplaursen/vim-potion'
 
 " Completion
-Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Better motions
 Plug 'easymotion/vim-easymotion'
-
-" Run programs
-Plug 'skywind3000/asyncrun.vim'
 
 " Show indentation with <Leader>ig
 Plug 'nathanaelkane/vim-indent-guides'
@@ -57,9 +58,4 @@ Plug 'reedes/vim-wordchipper'
 Plug 'rhysd/vim-grammarous'
 Plug 'vimwiki/vimwiki'
 
-" Snippets
-Plug 'honza/vim-snippets'
-
 call plug#end()
-
-let g:polyglot_disabled=['latex']

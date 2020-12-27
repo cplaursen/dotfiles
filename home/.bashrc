@@ -45,3 +45,7 @@ function countdown(){
 }
 
 source /home/chris/.config/broot/launcher/bash/br
+export MORSE_BLENDER=~/Documents/morse/blender/blender
+
+# opam configuration
+test -r /home/chris/.opam/opam-init/init.sh && . /home/chris/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true

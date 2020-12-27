@@ -116,7 +116,7 @@ nnoremap <leader>g :Goyo<CR>
 " Pencil
 augroup pencil
     autocmd!
-    autocmd FileType markdown,mkd,tex call pencil#init()
+    autocmd FileType markdown,mkd,tex,text call pencil#init()
 augroup END
 
 let g:pencil#wrapModeDefault = 'soft'
