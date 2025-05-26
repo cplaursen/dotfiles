@@ -1,24 +1,19 @@
 #!/bin/bash
+
+case $- in
+    *i*) ;;
+      *) return;;
+esac
+
 stty -ixon # Disable ctrl-s and ctrl-q.
 shopt -s autocd #Allows you to cd into directory merely by typing the directory name.
 HISTSIZE= HISTFILESIZE= # Infinite history.
-export PS1="\[$(tput bold)\]\[$(tput setaf 6)\][\[$(tput setaf 4)\]\u \[$(tput setaf 5)\]\W\[$(tput setaf 6)\]]\[$(tput setaf 7)\$(git_branch)\]\\$ \[$(tput sgr0)\]"
-
+export PS1='\[\e[38;5;35m\]\w\[\e[0m\]\\$ '
 [ -f "$HOME/.config/shortcutrc" ] && source "$HOME/.config/shortcutrc" # Load shortcut aliases
 [ -f "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc"
 
 function l {
-    tmp="$(mktemp)"
-    lf -last-dir-path="$tmp" "$@"
-    if [ -f "$tmp" ]; then
-        dir="$(cat "$tmp")"
-        rm -f "$tmp"
-        if [ -d "$dir" ]; then
-            if [ "$dir" != "$(pwd)" ]; then
-                cd "$dir"
-            fi
-        fi
-    fi
+    cd "$(command lf -print-last-dir "$@")"
 }
 
 function rangercd {
@@ -35,7 +30,6 @@ git_branch() {
   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
 }
 
-
 function countdown(){
    date1=$((`date +%s` + $1)); 
    while [ "$date1" -ge `date +%s` ]; do 
@@ -44,8 +38,44 @@ function countdown(){
    done
 }
 
-source /home/chris/.config/broot/launcher/bash/br
-export MORSE_BLENDER=~/Documents/morse/blender/blender
+# For seL4/l4v to work
+export L4V_ARCH=ARM
 
-# opam configuration
-test -r /home/chris/.opam/opam-init/init.sh && . /home/chris/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+[ -f "/home/christianpardillolaursen/.ghcup/env" ] && source "/home/christianpardillolaursen/.ghcup/env" # ghcup-env
+. "$HOME/.cargo/env"
+
+# Setup zoxide
+eval "$(zoxide init bash)"
+
+# dotnet telemetry
+export DOTNET_CLI_TELEMETRY_OPTOUT=1
+
+# Flutter binaries
+export PATH="$PATH":"$HOME/.pub-cache/bin"
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/christianpardillolaursen/.local/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/christianpardillolaursen/.local/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/christianpardillolaursen/.local/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/christianpardillolaursen/.local/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Android SDK
+export ANDROID_HOME="$HOME/.local/Android/Sdk"
+export PATH="$PATH":"$ANDROID_HOME/cmdline-tools/latest/bin":"$ANDROID_HOME/platform-tools"

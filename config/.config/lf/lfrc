@@ -1,6 +1,9 @@
 # Basic vars
 set shell sh
-set previewer ~/.config/lf/scope
+set previewer ctpv
+set cleaner ctpvclear
+&ctpv -s $id
+&ctpvquit $id
 set dircounts true
 set shellopts '-eu'
 set ifs "\n"
@@ -9,8 +12,9 @@ set info size
 
 set hiddenfiles ".*:*.log:*.aux:*.bbl:*.bcf:*.synctex.gz:
                  :*.blg:*.run.xml:*.fdb_latexmk:*.fls:*.cls:*.sty:*.out:
-                 :*~"
+                 :*~:*.tmp:*.toc:*.nav:*.bak:*.snm:*.hi:*.o"
 
+set cursorpreviewfmt "\033[7m"
 # cmds/functions
 cmd open ${{
     case $(file --mime-type $f -b) in
@@ -57,36 +61,32 @@ cmd bulkrename ${{
 
 cmd mkd ${{mkdir -p}}
 
+# Setup zoxide
+cmd z %{{
+	result="$(zoxide query --exclude $PWD $@ | sed 's/\\/\\\\/g;s/"/\\"/g')"
+	lf -remote "send $id cd \"$result\""
+}}
+
+cmd zi ${{
+	result="$(zoxide query -i | sed 's/\\/\\\\/g;s/"/\\"/g')"
+	lf -remote "send $id cd \"$result\""
+}}
+
+cmd on-cd &{{
+        zoxide add "$PWD"
+}}
+
 # Bindings
 map g top
 map D delete
+map <delete> delete
 map C copyto
 map M moveto
 map a push %mkdir<space>
 map <insert> push %touch<space>
 
-# Unmap the default binding
-map r
-# Rename the file with a completely different name
-map rc push :rename<space>
-# Edit the current filename
-map ra ${{
-	# get 'basename' of the selection
-	filename="${f##*/}"
-	# quote it so we won't deal with quotes in the lf -remote command
-	filename="$(printf '%q' "$filename")"
-	filename="${filename// /<space>}"
-	lf -remote "send $id push :rename<space>$filename"
-}}
-# Edit filename before the extension
-map re ${{
-	# get 'basename' of the selection
-	filename="${f##*/}"
-	# quote it so we won't deal with quotes in the lf -remote command
-	filename="$(printf '%q' "$filename")"
-	filename="${filename// /<space>}"
-	lf -remote "send $id push :rename<space>$filename<a-b><c-b>"
-}}
+map r push :rename<space>
+
 map R $lf -remote "send $id push :rename<space>$f"
 
 map b bulkrename
@@ -97,3 +97,4 @@ map x $$f
 map X !extract $f
 map o &mimeopen "$f"
 map O $mimeopen --ask "$f"
+map z push :z<space>

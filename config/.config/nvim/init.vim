@@ -1,112 +1,90 @@
+set nocompatible
+filetype plugin indent on
 syntax on
 
 source ~/.config/nvim/plugins.vim
-filetype plugin indent on
 
-colorscheme badwolf
+
+syntax enable
 set termguicolors
 
-" Use jk to exit insert mode
+source ~/.config/nvim/theme/current-theme.vim
+
+"" Use jk to exit insert mode
 inoremap jk <ESC>
-" Disable ESC to force myself to learn jk
-inoremap <ESC> <nop>
-" Map the leader key to SPACE
+"" Caps lock still exits insert mode
+inoremap JK <ESC>
+"" Map the leader key to SPACE
 let mapleader="\<SPACE>"
-" Add line numbers
+"" Add line numbers
 set nu rnu
-" Fix tabs
+"" Fix tabs
 set tabstop=4 softtabstop=4 expandtab shiftwidth=4 smarttab
-" Make macros faster
+"" Make macros faster
 set lazyredraw
-" Remove folds
+"" Remove folds
 set nofen            
-" Behave better on small screen
+"" Behave better on small screen
 set nowrap
-" See changes made to a file
+"" Yank copies to clipboard
+set clipboard=unnamedplus
+"" See changes made to a file
 :command D w !diff % -
-" Word count in file
+"" Word count in file
 :command Count w !texcount -
-" Remap leader e to insert one character
-nmap <silent> <leader>e "=nr2char(getchar())<cr>P
-" Make Q run the last command
+"" Make Q run the last command
 nnoremap Q @@
-" Set filetype of ML files
+"" Set filetype of ML files
 autocmd BufEnter *.ML set filetype=sml
-" Open file manager
-nnoremap <F2> :NERDTreeToggle<CR>
-" Open fuzzy finder in directory of open file
+"" Set filetype of shp files
+autocmd BufEnter *.shp set filetype=shp
+"" Open file manager
+"nnoremap <F2> :NERDTreeToggle<CR>
+"" Open fuzzy finder in directory of open file
 nnoremap <F3> :Files %:p:h<CR>
-" Quick run via <F5>
-nnoremap <F5> :call <SID>compile_and_run()<CR> 
+"" Quick run via <F5>
+"nnoremap <F5> :call <SID>compile_and_run()<CR> 
 nnoremap <leader>n :noh<CR>
-
-function! s:compile_and_run()
-    exec 'w'
-    if &filetype == 'c'
-        exec "AsyncRun! gcc % -o %<; time ./%<"
-    elseif &filetype == 'cpp'
-       exec "AsyncRun! g++ -std=c++11 % -o %<; time ./%<"
-    elseif &filetype == 'java'
-       exec "AsyncRun! javac %; time java %<"
-    elseif &filetype == 'sh'
-       exec "AsyncRun! time bash %"
-    elseif &filetype == 'python'
-       exec "AsyncRun! time python %"
-    elseif &filetype == 'ada'
-	exec "AsyncRun! gnatmake % -o %<; time ./%<"
-    elseif &filetype == 'haskell'
-        exec "AsyncRun! time runhaskell %"
-    elseif &filetype == 'erlang'
-        exec "AsyncRun! time erl %"
-    elseif &filetype == 'javascript'
-        exec "AsyncRun! time rhino %"
-    endif
-endfunction
-
-" Run in interactive shell and switch to it via <F6>
-nnoremap <F6> :call <SID>interactive_shell()<CR>
-
-function! s:interactive_shell()
-    if &filetype == 'haskell'
-        exec 'w | vsp'
-        exec "terminal ghci %"
-    elseif &filetype == 'python'
-        exec 'w | vsp'
-        exec "terminal python3 -i %"
-    elseif &filetype == 'erlang'
-        exec 'w | vsp'
-        exec "terminal erl"
-    endif
-endfunction
-
-let g:asyncrun_open = 15
-
-" Remaps for easier window navigation
-set splitbelow splitright
-nmap <silent> <C-J> <C-w>j
-nmap <silent> <C-K> <C-w>k
-nmap <silent> <C-H> <C-w>h
-nmap <silent> <C-L> <C-w>l
-
-" Remaps for tab navigation
-nnoremap <silent> <A-h> :tabprevious<CR>
-nnoremap <silent> <A-l> :tabnext<CR>
-nnoremap <silent> <A-S-H> :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
-nnoremap <silent> <A-S-L> :execute 'silent! tabmove ' . (tabpagenr()+1)<CR>
-
-" Status bar config
-let g:airline_theme = 'dark_minimal'
-
-" LaTeX
+"
+"
+"" Remaps for easier window navigation
+"set splitbelow splitright
+"nmap <silent> <C-J> <C-w>j
+"nmap <silent> <C-K> <C-w>k
+"nmap <silent> <C-H> <C-w>h
+"nmap <silent> <C-L> <C-w>l
+"
+"" Remaps for tab navigation
+"nnoremap <silent> <A-h> :tabprevious<CR>
+"nnoremap <silent> <A-l> :tabnext<CR>
+"nnoremap <silent> <A-S-H> :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
+"nnoremap <silent> <A-S-L> :execute 'silent! tabmove ' . (tabpagenr()+1)<CR>
+"
+"" Status bar config
+let g:airline_theme = 'violet'
+""
+"" LaTeX
 set grepprg=grep\ -nH\ $*
-let g:tex_flavor = "latex"
-let g:vimtex_view_method = "zathura"
+let g:tex_flavor="latex"
+let g:vimtex_view_method="zathura"
+let g:vimtex_quickfix_mode=0
+set conceallevel=1
+let g:tex_conceal='abdmg'
 autocmd FileType tex set spell spelllang=en_gb
-
-" Disable folds
-let Tex_FoldedSections=""
-let Tex_FoldedEnvironments=""
-let Tex_FoldedMisc=""
+let g:vimtex_compiler_latexmk = {
+        \ 'build_dir' : '',
+        \ 'callback' : 1,
+        \ 'continuous' : 1,
+        \ 'executable' : 'latexmk',
+        \ 'hooks' : [],
+        \ 'options' : [
+        \   '-verbose',
+        \   '-file-line-error',
+        \   '-synctex=1',
+        \   '-shell-escape',
+        \   '-interaction=nonstopmode',
+        \ ],
+        \}
 
 " Goyo
 autocmd! User GoyoEnter Limelight
@@ -116,38 +94,31 @@ nnoremap <leader>g :Goyo<CR>
 " Pencil
 augroup pencil
     autocmd!
-    autocmd FileType markdown,mkd,tex,text call pencil#init()
+    autocmd FileType markdown,mkd,tex,text,vimwiki call pencil#init()
 augroup END
 
 let g:pencil#wrapModeDefault = 'soft'
-
-" Ditto
-au FileType markdown,text,tex DittoOn  " Turn on Ditto's autocmds
-nmap <leader>di <Plug>ToggleDitto      " Turn Ditto on and off
-nmap =d <Plug>DittoNext                " Jump to the next word
-nmap -d <Plug>DittoPrev                " Jump to the previous word
-nmap +d <Plug>DittoGood                " Ignore the word under the cursor
-nmap _d <Plug>DittoBad                 " Stop ignoring the word under the cursor
-nmap ]d <Plug>DittoMore                " Show the next matches
-nmap [d <Plug>DittoLess                " Show the previous matches
-
-
-" CoC
-source ~/.config/nvim/coc.vim 
-
-" Isabelle
-let g:isabelle_abbreviations = 1
-let g:isabelle_tex = 1
+let g:pencil#conceallevel = 1
 
 " Vimwiki
-let g:vimwiki_list = [{'path': '~/Documents/vimwiki', 'syntax': 'markdown', 'ext': '.md'}]
+"let g:vimwiki_list = [{'path': '~/Documents/vimwiki'}]
 
-" Vim pager
-if !exists('g:vimpager')
-  let g:vimpager = {}
-endif
+" Treesitter
+lua require('config/treesitter')
+lua require('lspconfig').pyright.setup{}
+lua require('lspconfig').dartls.setup{}
+lua require('lspconfig').texlab.setup{}
+lua require('lspconfig').ruff_lsp.setup({ init_options = { settings = { } } })
 
-if !exists('g:less')
-  let g:less     = {}
-endif
+" Run dart format whenever a dart file is saved
+autocmd BufWritePre *.dart call s:FormatDart()
 
+function! s:FormatDart()
+  let l:formatted = system('dart format --stdin', join(getline(1, '$'), "\n"))
+  if v:shell_error
+    echohl ErrorMsg | echom 'dart format failed' | echohl None
+    return
+  endif
+  let l:lines = split(l:formatted, "\n")
+  call setline(1, l:lines)
+endfunction

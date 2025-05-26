@@ -2,18 +2,16 @@
 # Profile file. Runs on login.
 
 # Adds `~/.scripts` and all subdirectories to $PATH
-export PATH="$PATH:/home/chris/.local/bin/:/home/chris/.local/bin/i3cmds:/home/chris/.local/bin/tools:/home/chris/.cargo/bin"
+export PATH="$PATH:/home/christianpardillolaursen/.local/bin/:/home/christianpardillolaursen/.local/bin/i3cmds:/home/christianpardillolaursen/.local/bin/tools"
+export L4V_ARCH=X64
 export EDITOR="nvim"
-export PAGER="vimpager"
 export TERMINAL="kitty"
-export BROWSER="brave"
 export READER="zathura"
-export FILE="ranger"
-export BIB="$HOME/Documents/LaTeX/uni.bib"
-export REFER="$HOME/Documents/referbib"
+export FILE="lf"
 export SUDO_ASKPASS="$HOME/.local/bin/tools/dmenupass"
 export NOTMUCH_CONFIG="$HOME/.config/notmuch-config"
 export GTK2_RC_FILES="$HOME/.config/gtk-2.0/gtkrc-2.0"
+export MOZ_ENABLE_WAYLAND=1
 
 # less/man colors
 export LESS=-R
@@ -48,13 +46,20 @@ if [ -n "$BASH_VERSION" ]; then
 fi
 
 # set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/bin" ] ; then
-    PATH="$HOME/bin:$PATH"
-fi
-
-# set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
 xset r rate 220 40
+
+export PATH="$HOME/.elan/bin:$PATH"
+
+if [ -e /home/christianpardillolaursen/.nix-profile/etc/profile.d/nix.sh ]; then . /home/christianpardillolaursen/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+
+# opam configuration
+test -r /home/christianpardillolaursen/.opam/opam-init/init.sh && . /home/christianpardillolaursen/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
+. "$HOME/.cargo/env"
+
+# >>> coursier install directory >>>
+export PATH="$PATH:/home/christianpardillolaursen/.local/share/coursier/bin"
+# <<< coursier install directory <<<

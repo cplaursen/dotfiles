@@ -6,5 +6,11 @@
     ci = commit
     br = branch
     co = checkout
+    sw = switch
+    rs = restore
+    pl = pull
 [pull]
 	ff = only
+[credential]
+	helper = store
+	helper = store
